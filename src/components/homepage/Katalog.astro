@@ -1,0 +1,76 @@
+---
+import CatalogCard from "./CatalogCard.astro";
+const katalogs = [
+  {
+    kategori: "20 Feet",
+    tipe: "Regular",
+    img: "/assets/regular-placeholder.jpg",
+    link: "/",
+  },
+  {
+    kategori: "20 Feet",
+    tipe: "Office Purpose",
+    img: "/assets/office-placeholder.jpg",
+    link: "/",
+  },
+  {
+    kategori: "20 Feet",
+    tipe: "Garuda",
+    img: "/assets/garuda-placeholder.jpg",
+    link: "/",
+  },
+  {
+    kategori: "20 Feet",
+    tipe: "Air Asia",
+    img: "/assets/airasia-placeholder.jpg",
+    link: "/",
+  },
+  {
+    kategori: "10 Feet",
+    tipe: "Regular",
+    img: "/assets/10feet-placeholder.jpg",
+    link: "/",
+  },
+  {
+    kategori: "40 Feet",
+    tipe: "Regular",
+    img: "/assets/40feet-placeholder.jpg",
+    link: "/",
+  },
+];
+---
+
+<style>
+  .custom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+</style>
+
+<section class="p-5 md:p-10 py-20 md:py-40 bg-emerald-950">
+  <div class="mb-10">
+    <h2 class="text-5xl font-bold text-white mb-5">Katalog Kontainer Kami</h2>
+    <p class="max-w-screen-sm text-white font-light">
+      Kami menyediakan beragam kontainer dalam berbagai kondisi, baik baru
+      maupun bekas, serta modifikasi yang sesuai dengan kebutuhan Anda. Tersedia
+      ukuran 20 feet dan 40 feet dengan pilihan harga yang bervariasi. Kontainer
+      kami ideal untuk berbagai keperluan seperti kantor, cafe, gudang, atau
+      tempat sementara, dengan keunggulan mudah dimodifikasi dan dipindahkan.
+    </p>
+  </div>
+  <!-- <div class="flex flex-col md:flex-row gap-10 flex-wrap"> -->
+  <div class="custom-grid gap-10">
+    {
+      katalogs.map((i) => {
+        return (
+          <CatalogCard
+            kategori={i.kategori}
+            tipe={i.tipe}
+            img={i.img}
+            link={i.link}
+          />
+        );
+      })
+    }
+  </div>
+</section>

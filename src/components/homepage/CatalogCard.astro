@@ -1,0 +1,20 @@
+---
+const { kategori, tipe, img, link } = Astro.props;
+---
+
+<a href={link}>
+  <!-- Katalog card -->
+  <div class="bg-white shadow-md rounded-2xl overflow-hidden w-full">
+    <img
+      src={img}
+      alt="Contoh kontainer bekas 20 feet reguler"
+      class="aspect-video object-cover"
+    />
+    <div class="p-4 flex justify-between items-end">
+      <div>
+        <p class="text-lg">{kategori}</p>
+        <p class="text-3xl text-emerald-600 font-bold">{tipe}</p>
+      </div>
+    </div>
+  </div>
+</a>

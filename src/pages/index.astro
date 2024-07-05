@@ -1,0 +1,20 @@
+---
+import MainLayout from "../layout/MainLayout.astro";
+import Header from "../components/homepage/Header.astro";
+import Features from "../components/homepage/Features.astro";
+import Katalog from "../components/homepage/Katalog.astro";
+
+const headcontent = {
+  title: "JAYAKON | Jual Beli Container Bekas JABODETABEK",
+  description:
+    "Pusat penjualan container segala kondisi. Kami menyediakan container baru, bekas ataupun modifikasi dengan jenis dan harga yang beragam. ",
+  keywords: "Penyedia container segala kondisi",
+  canonical: "https://www.jayakontainer.com",
+};
+---
+
+<MainLayout headcontent={headcontent}>
+  <Header />
+  <Katalog />
+  <Features />
+</MainLayout>

@@ -1,0 +1,54 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import BaseHead from "../components/BaseHead.astro";
+const { headcontent } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.svg" />
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css" />
+    <BaseHead
+      title={headcontent.title}
+      description={headcontent.description}
+      keywords={headcontent.keywords}
+      canonical={headcontent.canonical}
+    />
+  </head>
+  <body class="font-brand">
+    <Navbar />
+    <div class="h-16 relative top-0 right-0 w-full">spacer</div>
+
+    <main class="relative">
+      <slot />
+
+      <div class="w-fit p-3 sticky bottom-0">
+        <a
+          href="whatsapp://send?phone=6281383392512&text=www.jayakontainer.com,%20Perusahaan%20kontainer%20yang%20sudah%20teruji%20Tsunami%20Anyer."
+        >
+          <button
+            class="h-12 flex gap-2 items-center p-3 rounded-full bg-emerald-500 w-fit shadow-lg"
+          >
+            <img
+              src="/assets/graphic/ic-whatsapp.svg"
+              alt="Whatsapp logo"
+              class="h-full"
+            />
+            <p class="text-emerald-950 text-sm">Whatsapp kami</p>
+          </button>
+        </a>
+      </div>
+    </main>
+
+    <Footer />
+
+    <!-- <script src="/bootstrap/bootstrap.bundle.min.js"></script> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
