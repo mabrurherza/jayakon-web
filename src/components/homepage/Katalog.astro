@@ -1,43 +1,8 @@
 ---
 import CatalogCard from "./CatalogCard.astro";
-const katalogs = [
-  {
-    kategori: "20 Feet",
-    tipe: "Regular",
-    img: "/assets/regular-placeholder.jpg",
-    link: "/",
-  },
-  {
-    kategori: "20 Feet",
-    tipe: "Office Purpose",
-    img: "/assets/office-placeholder.jpg",
-    link: "/",
-  },
-  {
-    kategori: "20 Feet",
-    tipe: "Garuda",
-    img: "/assets/garuda-placeholder.jpg",
-    link: "/",
-  },
-  {
-    kategori: "20 Feet",
-    tipe: "Air Asia",
-    img: "/assets/airasia-placeholder.jpg",
-    link: "/",
-  },
-  {
-    kategori: "10 Feet",
-    tipe: "Regular",
-    img: "/assets/10feet-placeholder.jpg",
-    link: "/",
-  },
-  {
-    kategori: "40 Feet",
-    tipe: "Regular",
-    img: "/assets/40feet-placeholder.jpg",
-    link: "/",
-  },
-];
+const allKontainers = await Astro.glob("../../pages/kontainer/*.md");
+
+console.log(allKontainers);
 ---
 
 <style>
@@ -47,7 +12,7 @@ const katalogs = [
   }
 </style>
 
-<section class="p-5 md:p-10 py-20 md:py-40 bg-emerald-950">
+<section class="p-5 md:p-10 py-20 md:py-40 bg-emerald-950" id="katalog">
   <div class="mb-10">
     <h2 class="text-5xl font-bold text-white mb-5">Katalog Kontainer Kami</h2>
     <p class="max-w-screen-sm text-white font-light">
@@ -58,16 +23,15 @@ const katalogs = [
       tempat sementara, dengan keunggulan mudah dimodifikasi dan dipindahkan.
     </p>
   </div>
-  <!-- <div class="flex flex-col md:flex-row gap-10 flex-wrap"> -->
   <div class="custom-grid gap-10">
     {
-      katalogs.map((i) => {
+      allKontainers.map((i) => {
         return (
           <CatalogCard
-            kategori={i.kategori}
-            tipe={i.tipe}
-            img={i.img}
-            link={i.link}
+            type={i.frontmatter.type}
+            height={i.frontmatter.height}
+            image={i.frontmatter.image}
+            link={i.url}
           />
         );
       })

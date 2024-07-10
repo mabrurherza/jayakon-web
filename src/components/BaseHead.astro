@@ -1,5 +1,10 @@
 ---
-const { title, description, keywords, canonical } = Astro.props;
+const {
+  title = "JAYAKON | Jual Sewa Container Baru atau Bekas JABODETABEK",
+  description = "Pusat penjualan atau penyewaan container segala kondisi. Kami menyediakan container baru, bekas ataupun modifikasi dengan jenis dan harga yang beragam",
+  keywords = "jual kontainer bekas, jual kontainer kantor, office, sewa kontainer, bangunan",
+  canonical = "https://www.jayakon.com",
+} = Astro.props;
 ---
 
 <title>{title}</title>
@@ -8,5 +13,5 @@ const { title, description, keywords, canonical } = Astro.props;
 <link rel="canonical" href={canonical} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content="/assets/images/SJU-og-images.jpg" />
+<meta property="og:image" content="/assets/images/rurikon-og-images.jpg" />
 <meta name="robots" content="index, follow" />

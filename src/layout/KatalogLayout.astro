@@ -1,0 +1,74 @@
+---
+import MainLayout from "./MainLayout.astro";
+const { frontmatter } = Astro.props;
+
+const headcontent = {
+  title: `Jual Sewa: ${frontmatter.type}`,
+  description: `RURIKON menyediakan jual atau sewa kontainer bekas tipe ${frontmatter.type} dengan ukuran ${frontmatter.height}`,
+};
+---
+
+<style>
+  .list > *:nth-child(odd) {
+    background-color: rgb(245, 245, 245);
+  }
+</style>
+
+<MainLayout headcontent={headcontent}>
+  <div class="spacer h-10"></div>
+  <header class="p-5 md:p-10 m-auto max-w-screen-lg">
+    <p class="bg-emerald-600 text-xl p-2 w-fit text-white mb-2">
+      {frontmatter.height}
+    </p>
+    <h1 class="text-5xl font-bold text-emerald-950 mb-5">{frontmatter.type}</h1>
+    <img
+      src={frontmatter.image}
+      alt={frontmatter.type}
+      class="aspect-video object-cover rounded-lg"
+    />
+  </header>
+  <main class="p-5 md:p-10 m-auto max-w-screen-lg">
+    <div class="text-lg font-medium mb-5">
+      <slot />
+    </div>
+    {
+      frontmatter.specification ? (
+        <ul class="list">
+          {frontmatter.specification.map((i) => {
+            return <li class="p-2">{i}</li>;
+          })}
+        </ul>
+      ) : (
+        ""
+      )
+    }
+
+    {
+      frontmatter.detailedSpec ? (
+        <div class="flex flex-col gap-5">
+          {frontmatter.detailedSpec.map((i) => {
+            return (
+              <section>
+                <h2 class="text-emerald-900 text-lg font-bold mb-2">
+                  {i.section}
+                </h2>
+                <ul class="list">
+                  {Object.entries(i.specs).map(([key, value]) => {
+                    return (
+                      <li class="flex">
+                        <p class="flex-1  p-2">{key}</p>
+                        <p class="flex-1 p-2 font-bold ">{value}</p>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
+            );
+          })}
+        </div>
+      ) : (
+        ""
+      )
+    }
+  </main>
+</MainLayout>
